@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="ancTherapySession" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gdse.serenity.controller.TherapySessionController">
+    <children>
+        <BorderPane prefHeight="700.0" prefWidth="927.0">
+            <top>
+                <VBox spacing="10.0">
+                    <children>
+                        <Label text="Therapy Session Scheduling" textFill="#2b579a">
+                            <font>
+                                <Font name="System Bold" size="24.0" />
+                            </font>
+                        </Label>
+                        <Separator />
+                    </children>
+                    <padding>
+                        <Insets bottom="10.0" left="20.0" right="20.0" top="20.0" />
+                    </padding>
+                </VBox>
+            </top>
+            <center>
+                <SplitPane dividerPositions="0.35" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                    <items>
+                        <VBox spacing="10.0">
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </padding>
+                            <children>
+                                <Label text="Session Details">
+                                    <font>
+                                        <Font name="System Bold" size="14.0" />
+                                    </font>
+                                </Label>
+                                <GridPane hgap="10.0" vgap="10.0">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    </rowConstraints>
+                                    <children>
+                                        <Label text="Session ID:" />
+                                        <Label fx:id="sessionIdLabel" prefHeight="17.0" prefWidth="175.0" text="-" GridPane.columnIndex="1" />
+
+                                        <Label text="Session Date:" GridPane.rowIndex="1" />
+
+                                        <Label text="Patient:" GridPane.rowIndex="2" />
+
+                                        <Label text="Therapist:" GridPane.rowIndex="3" />
+
+                                        <Label text="Therapy Program:" GridPane.rowIndex="4" />
+
+                                        <DatePicker fx:id="sessionDatePicker" prefHeight="25.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                        <ComboBox fx:id="patientComboBox" prefHeight="25.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                        <ComboBox fx:id="therapistComboBox" prefHeight="25.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                        <ComboBox fx:id="programComboBox" prefHeight="25.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                    </children>
+                                </GridPane>
+                                <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                                    <padding>
+                                        <Insets top="10.0" />
+                                    </padding>
+                                </HBox>
+                                <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                                    <children>
+                                        <Button fx:id="clearButton" mnemonicParsing="false" onAction="#handleClear" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #e0e0e0;" text="Clear" />
+                                        <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#handleDelete" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #ff5757; -fx-text-fill: white;" text="Delete" />
+                                        <Button fx:id="editButton" mnemonicParsing="false" onAction="#handleEdit" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #4FC1E9; -fx-text-fill: white;" text="Update" />
+                                        <Button fx:id="saveButton" mnemonicParsing="false" onAction="#handleSave" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #1F7D53; -fx-text-fill: white;" text="Save" />
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                        <VBox spacing="10.0">
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </padding>
+                            <children>
+                                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                    <children>
+                                        <Label text="Scheduled Sessions">
+                                            <font>
+                                                <Font name="System Bold" size="14.0" />
+                                            </font>
+                                        </Label>
+                                        <Region HBox.hgrow="ALWAYS" />
+                                        <TextField fx:id="searchField" promptText="Search sessions..." />
+                                        <Button fx:id="searchButton" mnemonicParsing="false" onAction="#handleSearch" style="-fx-background-color: #2b579a; -fx-text-fill: white;" text="Search" />
+                                    </children>
+                                </HBox>
+                                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                    <children>
+                                        <Region HBox.hgrow="ALWAYS" />
+                                        <Button fx:id="addSessionButton" onAction="#showAddSessionDialog" style="-fx-background-color: #2b579a; -fx-text-fill: white;" styleClass="primary-button" text="Add New Session" />
+                                    </children>
+                                </HBox>
+                                <TableView fx:id="sessionTable" onMouseClicked="#onClickTable" VBox.vgrow="ALWAYS">
+                                    <columns>
+                                        <TableColumn fx:id="idColumn" prefWidth="80.0" text="ID" />
+                                        <TableColumn fx:id="dateColumn" prefWidth="102.0" text="Date" />
+                                        <TableColumn fx:id="therapistColumn" prefWidth="126.5" text="Therapist" />
+                                        <TableColumn fx:id="patientColumn" prefWidth="140.5" text="Patient" />
+                                        <TableColumn fx:id="programColumn" prefWidth="127.5" text="Program" />
+                                    </columns>
+                                    <placeholder>
+                                        <Label text="No sessions found" />
+                                    </placeholder>
+                                </TableView>
+                            </children>
+                        </VBox>
+                    </items>
+                </SplitPane>
+            </center>
+            <bottom>
+                <HBox alignment="CENTER_RIGHT" spacing="10.0" style="-fx-background-color: #f0f7ff;" BorderPane.alignment="CENTER">
+                    <children>
+                        <Label fx:id="statusLabel" text="Ready" />
+                    </children>
+                    <padding>
+                        <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
+                    </padding>
+                </HBox>
+            </bottom>
+        </BorderPane>
+    </children>
+</AnchorPane>

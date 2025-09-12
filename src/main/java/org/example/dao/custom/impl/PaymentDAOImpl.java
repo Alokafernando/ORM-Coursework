@@ -1,8 +1,8 @@
 package org.example.dao.custom.impl;
 
-import com.gdse.serenity.config.FactoryConfiguration;
-import com.gdse.serenity.dao.custom.PaymentDAO;
-import com.gdse.serenity.entity.Payment;
+import org.example.config.FactoryConfiguration;
+import org.example.dao.custom.PaymentDAO;
+import org.example.entity.Payment;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;

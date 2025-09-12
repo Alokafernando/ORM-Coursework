@@ -1,7 +1,8 @@
 package org.example.dao.custom;
 
-import com.gdse.serenity.dao.CrudDAO;
-import com.gdse.serenity.entity.User;
+
+import org.example.dao.CrudDAO;
+import org.example.entity.User;
 
 public interface UserDAO extends CrudDAO<User> {
 }

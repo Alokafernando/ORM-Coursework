@@ -1,6 +1,8 @@
 package org.example.dao;
 
-import com.gdse.serenity.db.DBConnection;
+
+
+import org.example.db.DBConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

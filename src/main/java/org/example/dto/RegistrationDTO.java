@@ -1,9 +1,10 @@
 package org.example.dto;
 
-import com.gdse.serenity.entity.Patient;
-import com.gdse.serenity.entity.RegistrationId;
-import com.gdse.serenity.entity.TherapyProgram;
+
 import lombok.*;
+import org.example.entity.Patient;
+import org.example.entity.RegistrationId;
+import org.example.entity.TherapyProgram;
 
 @Getter
 @Setter

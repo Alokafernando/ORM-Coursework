@@ -1,9 +1,10 @@
 package org.example.tdm;
 
-import com.gdse.serenity.dto.PaymentDTO;
-import com.gdse.serenity.dto.TherapyProgramDTO;
-import com.gdse.serenity.dto.TherapySessionDTO;
+
 import lombok.*;
+import org.example.dto.PaymentDTO;
+import org.example.dto.TherapyProgramDTO;
+import org.example.dto.TherapySessionDTO;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

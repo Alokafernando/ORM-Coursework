@@ -1,7 +1,8 @@
 package org.example.dao.custom;
 
-import com.gdse.serenity.dao.CrudDAO;
-import com.gdse.serenity.entity.Registration;
+
+import org.example.dao.CrudDAO;
+import org.example.entity.Registration;
 
 public interface RegistrationDAO extends CrudDAO<Registration> {
 }

@@ -1,8 +1,8 @@
 package org.example.dao.custom.impl;
 
-import com.gdse.serenity.config.FactoryConfiguration;
-import com.gdse.serenity.dao.custom.PatientDAO;
-import com.gdse.serenity.entity.Patient;
+import org.example.config.FactoryConfiguration;
+import org.example.dao.custom.PatientDAO;
+import org.example.entity.Patient;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;

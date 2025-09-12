@@ -1,6 +1,8 @@
 package org.example.dao;
 
-import com.gdse.serenity.entity.SuperEntity;
+
+
+import org.example.entity.SuperEntity;
 
 import java.io.IOException;
 import java.util.List;

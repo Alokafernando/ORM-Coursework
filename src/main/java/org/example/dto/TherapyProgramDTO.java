@@ -1,7 +1,8 @@
 package org.example.dto;
 
-import com.gdse.serenity.entity.SuperEntity;
+
 import lombok.*;
+import org.example.entity.SuperEntity;
 
 import java.util.HashSet;
 import java.util.Set;

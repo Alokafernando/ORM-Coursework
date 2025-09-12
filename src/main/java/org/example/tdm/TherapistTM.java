@@ -1,9 +1,10 @@
 package org.example.tdm;
 
-import com.gdse.serenity.dto.TherapyProgramDTO;
-import com.gdse.serenity.dto.TherapySessionDTO;
-import com.gdse.serenity.entity.SuperEntity;
+
 import lombok.*;
+import org.example.dto.TherapyProgramDTO;
+import org.example.dto.TherapySessionDTO;
+import org.example.entity.SuperEntity;
 
 import java.util.ArrayList;
 import java.util.HashSet;

@@ -1,6 +1,8 @@
 package org.example.dao;
 
-import com.gdse.serenity.dao.custom.impl.*;
+
+import org.example.dao.custom.impl.*;
+
 
 public class DAOFactory {
     private static DAOFactory daoFactory;

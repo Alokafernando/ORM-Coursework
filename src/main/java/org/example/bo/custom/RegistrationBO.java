@@ -1,7 +1,9 @@
 package org.example.bo.custom;
 
-import com.gdse.serenity.bo.SuperBO;
-import com.gdse.serenity.dto.RegistrationDTO;
+
+
+import org.example.bo.SuperBO;
+import org.example.dto.RegistrationDTO;
 
 import java.io.IOException;
 import java.sql.SQLException;

@@ -1,10 +1,10 @@
 package org.example.bo.custom.impl;
 
-import com.gdse.serenity.bo.custom.UserBO;
-import com.gdse.serenity.dao.DAOFactory;
-import com.gdse.serenity.dao.custom.UserDAO;
-import com.gdse.serenity.dto.UserDTO;
-import com.gdse.serenity.entity.User;
+import org.example.bo.custom.UserBO;
+import org.example.dao.DAOFactory;
+import org.example.dao.custom.UserDAO;
+import org.example.dto.UserDTO;
+import org.example.entity.User;
 
 import java.io.IOException;
 import java.sql.SQLException;

@@ -1,7 +1,9 @@
 package org.example.dao.custom;
 
-import com.gdse.serenity.dao.CrudDAO;
-import com.gdse.serenity.entity.Patient;
+
+
+import org.example.dao.CrudDAO;
+import org.example.entity.Patient;
 
 import java.io.IOException;
 import java.util.List;

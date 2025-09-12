@@ -1,8 +1,7 @@
 package org.example.bo;
 
 
-import com.gdse.serenity.bo.custom.impl.*;
-import com.gdse.serenity.dao.custom.impl.*;
+import org.example.bo.custom.impl.*;
 
 public class BOFactory {
     public static BOFactory boFactory;

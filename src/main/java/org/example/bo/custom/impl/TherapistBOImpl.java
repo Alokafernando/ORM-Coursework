@@ -1,11 +1,11 @@
 package org.example.bo.custom.impl;
 
-import com.gdse.serenity.bo.custom.TherapistBO;
-import com.gdse.serenity.dao.DAOFactory;
-import com.gdse.serenity.dao.custom.TherapistDAO;
-import com.gdse.serenity.dao.custom.TherapyProgramDAO;
-import com.gdse.serenity.dto.TherapistDTO;
-import com.gdse.serenity.entity.Therapist;
+import org.example.bo.custom.TherapistBO;
+import org.example.dao.DAOFactory;
+import org.example.dao.custom.TherapistDAO;
+import org.example.dao.custom.TherapyProgramDAO;
+import org.example.dto.TherapistDTO;
+import org.example.entity.Therapist;
 
 import java.io.IOException;
 import java.sql.SQLException;

@@ -1,10 +1,10 @@
 package org.example.bo.custom.impl;
 
-import com.gdse.serenity.bo.custom.PaymentBO;
-import com.gdse.serenity.dao.DAOFactory;
-import com.gdse.serenity.dao.custom.PaymentDAO;
-import com.gdse.serenity.dto.PaymentDTO;
-import com.gdse.serenity.entity.Payment;
+import org.example.bo.custom.PaymentBO;
+import org.example.dao.DAOFactory;
+import org.example.dao.custom.PaymentDAO;
+import org.example.dto.PaymentDTO;
+import org.example.entity.Payment;
 
 import java.io.IOException;
 import java.sql.SQLException;

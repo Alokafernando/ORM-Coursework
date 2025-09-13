@@ -20,7 +20,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="ancTherapySession" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gdse.serenity.controller.TherapySessionController">
+<AnchorPane fx:id="ancTherapySession" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.TherapySessionController">
     <children>
         <BorderPane prefHeight="700.0" prefWidth="927.0">
             <top>

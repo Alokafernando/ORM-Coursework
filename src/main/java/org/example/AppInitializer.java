@@ -39,7 +39,7 @@ public class AppInitializer extends Application {
             Scene value = loadingTask.getValue();
 
             stage.setTitle("Serenity");
-            Image image = new Image(getClass().getResourceAsStream("/assests/images/logo.png"));
+            Image image = new Image(getClass().getResourceAsStream("/images/logo.png"));
             stage.getIcons().add(image);
 
 //            stage.setResizable(false);

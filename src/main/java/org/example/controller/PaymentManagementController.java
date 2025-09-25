@@ -117,7 +117,8 @@ public class PaymentManagementController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         idColumn.setCellValueFactory(new PropertyValueFactory<>("payId"));
-        patientColumn.setCellValueFactory(new PropertyValueFactory<>("patient"));
+//        patientColumn.setCellValueFactory(new PropertyValueFactory<>("patient"));
+        patientColumn.setCellValueFactory(new PropertyValueFactory<>("patientId"));
         amountColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("paymentDate"));
         methodColumn.setCellValueFactory(new PropertyValueFactory<>("paymentMethod"));
@@ -156,15 +157,20 @@ public class PaymentManagementController implements Initializable {
         List<String> patientIds = patientBO.getAllIds();
         ObservableList<String> patientIdList = FXCollections.observableArrayList(patientIds);
         patientComboBox.setItems(patientIdList);
+        patientComboBox.setPromptText("Select Patient");
     }
+
 
     private void loadMethods() {
         paymentMethodComboBox.setItems(FXCollections.observableArrayList("Card", "Cash"));
+        paymentMethodComboBox.setPromptText("Select Pay Method");
     }
 
     private void loadStatus() {
         statusComboBox.setItems(FXCollections.observableArrayList("Completed", "Not Completed"));
+        statusComboBox.setPromptText("Select Status");
     }
+
 
     private void refreshTable() throws SQLException, ClassNotFoundException, IOException {
         List<PaymentDTO> payments = paymentBO.getAll();  // Get all users from the BO
@@ -177,7 +183,7 @@ public class PaymentManagementController implements Initializable {
                     payment.getPaymentDate(),
                     payment.getPaymentMethod(),
                     payment.getStatus(),
-                    payment.getPatient()
+                    payment.getPatient() != null ? payment.getPatient().getPId() : null
             );
             paymentTMs.add(paymentTM);
         }
@@ -252,25 +258,35 @@ public class PaymentManagementController implements Initializable {
 
     @FXML
     void handleSave(ActionEvent event) {
-        String id = paymentIdLabel.getText();
-        String amount = txtAmount.getText();
-        LocalDate date = paymentDatePicker.getValue();
-        String method = paymentMethodComboBox.getValue();
-        String status = statusComboBox.getValue();
-        String patientId = patientComboBox.getValue();
-
-        PatientDTO patientDTO = new PatientDTO();
-        patientDTO.setPId(patientId);
-        patientDTO.setStatus(statusComboBox.getValue());
-
-        PaymentDTO paymentDTO = new PaymentDTO(id, Double.parseDouble(amount), date, method, status, patientDTO);
-
         try {
+            String id = paymentIdLabel.getText();
+            double amount = Double.parseDouble(txtAmount.getText());
+            LocalDate date = paymentDatePicker.getValue();
+            String method = paymentMethodComboBox.getValue();
+            String status = statusComboBox.getValue();
+            String patientId = patientComboBox.getValue(); // from combo box
+
+            // Build minimal patientDTO with only ID
+            PatientDTO patientDTO = new PatientDTO();
+            patientDTO.setPId(patientId);
+
+            // Build paymentDTO
+            PaymentDTO paymentDTO = new PaymentDTO(
+                    id,
+                    amount,
+                    date,
+                    method,
+                    status,
+                    patientDTO
+            );
+
+            // Save
             boolean isSaved = paymentBO.save(paymentDTO);
 
             if (isSaved) {
                 new Alert(Alert.AlertType.INFORMATION, "Payment saved successfully!").show();
                 refreshTable();
+
             } else {
                 new Alert(Alert.AlertType.ERROR, "Failed to save payment.").show();
             }
@@ -279,6 +295,7 @@ public class PaymentManagementController implements Initializable {
             new Alert(Alert.AlertType.ERROR, "An error occurred.").show();
         }
     }
+
 
     @FXML
     void cmbPatientOnAction(ActionEvent event) {
@@ -328,10 +345,10 @@ public class PaymentManagementController implements Initializable {
         PaymentTM selectedItem = paymentTable.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
             paymentIdLabel.setText(selectedItem.getPayId());
-            patientComboBox.setValue(selectedItem.getStatus());
+            patientComboBox.setValue(selectedItem.getPatientId());
             txtAmount.setText(String.valueOf(selectedItem.getAmount()));
             paymentDatePicker.setValue(selectedItem.getPaymentDate());
-            paymentMethodComboBox.setValue(selectedItem.getStatus());
+            paymentMethodComboBox.setValue(selectedItem.getPaymentMethod());
             statusComboBox.setValue(selectedItem.getStatus());
 
             saveButton.setDisable(true);
@@ -339,6 +356,7 @@ public class PaymentManagementController implements Initializable {
             deleteButton.setDisable(false);
         }
     }
+
 
     @FXML
     void openAddPaymentDialog(ActionEvent event) {

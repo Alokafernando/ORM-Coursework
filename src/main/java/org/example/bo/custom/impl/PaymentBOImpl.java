@@ -4,6 +4,7 @@ import org.example.bo.custom.PaymentBO;
 import org.example.dao.DAOFactory;
 import org.example.dao.custom.PatientDAO;
 import org.example.dao.custom.PaymentDAO;
+import org.example.dto.PatientDTO;
 import org.example.dto.PaymentDTO;
 import org.example.entity.Patient;
 import org.example.entity.Payment;
@@ -46,10 +47,20 @@ public class PaymentBOImpl implements PaymentBO {
         List<PaymentDTO> paymentDTOS = new ArrayList<>();
         List<Payment> payments = paymentDAO.getAll();
         for (Payment payment : payments) {
-            paymentDTOS.add(new PaymentDTO(payment.getPayId(), payment.getAmount(), payment.getPaymentDate(), payment.getPaymentMethod(), payment.getStatus()));
+            paymentDTOS.add(new PaymentDTO(
+                    payment.getPayId(),
+                    payment.getAmount(),
+                    payment.getPaymentDate(),
+                    payment.getPaymentMethod(),
+                    payment.getStatus(),
+                    payment.getPatient() != null
+                            ? new PatientDTO(payment.getPatient().getPId(), payment.getPatient().getName(), payment.getPatient().getPhone(), payment.getPatient().getEmail(), payment.getPatient().getStatus())
+                            : null
+            ));
         }
         return paymentDTOS;
     }
+
 
     @Override
     public boolean update(PaymentDTO paymentDTO) throws SQLException, ClassNotFoundException {

@@ -36,4 +36,13 @@ public class PatientDTO {
         this.status = status;
     }
 
+    public PatientDTO(String pId, String name, String email, String phone, String status) {
+        this.pId = pId;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.status = status;
+    }
+
+
 }

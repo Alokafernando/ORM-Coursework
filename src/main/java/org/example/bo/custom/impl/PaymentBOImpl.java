@@ -2,8 +2,10 @@ package org.example.bo.custom.impl;
 
 import org.example.bo.custom.PaymentBO;
 import org.example.dao.DAOFactory;
+import org.example.dao.custom.PatientDAO;
 import org.example.dao.custom.PaymentDAO;
 import org.example.dto.PaymentDTO;
+import org.example.entity.Patient;
 import org.example.entity.Payment;
 
 import java.io.IOException;
@@ -14,6 +16,7 @@ import java.util.Optional;
 
 public class PaymentBOImpl implements PaymentBO {
     PaymentDAO paymentDAO = DAOFactory.getInstance().getDAO(DAOFactory.DAOType.PAYMENT);
+    PatientDAO patientDAO = DAOFactory.getInstance().getDAO(DAOFactory.DAOType.PATIENT);
 
     @Override
     public String getNextId() throws SQLException, ClassNotFoundException {
@@ -21,8 +24,21 @@ public class PaymentBOImpl implements PaymentBO {
     }
 
     @Override
-    public boolean save(PaymentDTO paymentDTO) throws SQLException, ClassNotFoundException {
-        return paymentDAO.save(new Payment(paymentDTO.getPayId(), paymentDTO.getAmount(), paymentDTO.getPaymentDate(), paymentDTO.getPaymentMethod(), paymentDTO.getStatus()));
+    public boolean save(PaymentDTO paymentDTO) throws SQLException, ClassNotFoundException, IOException {
+        // Convert PatientDTO → Patient entity
+        Patient patient = patientDAO.findById(paymentDTO.getPatient().getPId())
+                .orElseThrow(() -> new RuntimeException("Patient not found"));
+
+        Payment payment = new Payment(
+                paymentDTO.getPayId(),
+                paymentDTO.getAmount(),
+                paymentDTO.getPaymentDate(),
+                paymentDTO.getPaymentMethod(),
+                paymentDTO.getStatus(),
+                patient   // ✅ pass entity
+        );
+
+        return paymentDAO.save(payment);
     }
 
     @Override

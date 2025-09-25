@@ -13,7 +13,8 @@ module mental.health.care.center {
     opens org.example.entity to org.hibernate.orm.core;
     opens org.example.config to jakarta.persistence;
     opens org.example.controller to javafx.fxml;
-    opens org.example.tdm to javafx.fxml;
+    opens org.example.tdm to javafx.base, javafx.fxml;
+
 
     exports org.example;
 }

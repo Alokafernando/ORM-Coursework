@@ -270,6 +270,7 @@ public class TherapyProgramManagementController implements Initializable {
             editButton.setDisable(false);
             deleteButton.setDisable(false);
         }
+
     }
 
     @FXML

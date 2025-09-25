@@ -79,8 +79,11 @@ public class PatientDAOImpl implements PatientDAO {
     @Override
     public List<String> getEnrolledPrograms(String patientId) throws IOException {
         Session session = FactoryConfiguration.getInstance().getSession();
+//        Query<String> query = session.createQuery(
+//                "SELECT tp.name FROM Patient p JOIN p.therapyPrograms tp WHERE p.pId = :id", String.class
+//        );
         Query<String> query = session.createQuery(
-                "SELECT tp.name FROM Patient p JOIN p.therapyPrograms tp WHERE p.pId = :id", String.class
+                "SELECT r.therapyProgram.name FROM Patient p JOIN p.registrations r WHERE p.pId = :id", String.class
         );
         query.setParameter("id", patientId);
 

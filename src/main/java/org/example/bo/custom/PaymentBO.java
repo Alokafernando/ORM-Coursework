@@ -12,7 +12,7 @@ import java.util.Optional;
 
 public interface PaymentBO extends SuperBO {
     public String getNextId() throws SQLException, ClassNotFoundException;
-    public boolean save(PaymentDTO paymentDTO) throws SQLException, ClassNotFoundException;
+    public boolean save(PaymentDTO paymentDTO) throws SQLException, ClassNotFoundException, IOException;
     public List<PaymentDTO> getAll() throws SQLException, ClassNotFoundException, IOException;
     public boolean update(PaymentDTO paymentDTO) throws SQLException, ClassNotFoundException;
     public boolean delete(String paymentId) throws SQLException, ClassNotFoundException;

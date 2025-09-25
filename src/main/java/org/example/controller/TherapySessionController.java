@@ -130,8 +130,17 @@ public class TherapySessionController implements Initializable {
         sessionIdLabel.setText(nextID);
         sessionDatePicker.setValue(null);
         therapistComboBox.getSelectionModel().clearSelection();
+        therapistComboBox.setValue(null); // explicitly set value
+        therapistComboBox.setPromptText("Select Therapist");
+
         patientComboBox.getSelectionModel().clearSelection();
+        patientComboBox.setValue(null);
+        patientComboBox.setPromptText("Select Patient");
+
         programComboBox.getSelectionModel().clearSelection();
+        programComboBox.setValue(null);
+        programComboBox.setPromptText("Select Program");
+
 
         loadPatientIds();
         loadTherapistIds();
@@ -149,19 +158,34 @@ public class TherapySessionController implements Initializable {
         List<String> patientIds = patientBO.getAllIds();
         ObservableList<String> patientIdList = FXCollections.observableArrayList(patientIds);
         patientComboBox.setItems(patientIdList);
+
+        patientComboBox.setPromptText("Select Patient ID");
+
+        patientComboBox.getSelectionModel().clearSelection();
     }
+
 
     private void loadTherapistIds() throws SQLException, ClassNotFoundException, IOException {
         List<String> therapistIds = therapistBO.getAllIds();
         ObservableList<String> therapistIdList = FXCollections.observableArrayList(therapistIds);
         therapistComboBox.setItems(therapistIdList);
+
+        therapistComboBox.setPromptText("Select Therapist ID");
+
+        therapistComboBox.getSelectionModel().clearSelection();
     }
+
 
     private void loadProgramIds() throws SQLException, ClassNotFoundException, IOException {
         List<String> therapyProgramIds = therapyProgramBO.getAllIds();
         ObservableList<String> therapyProgramIdList = FXCollections.observableArrayList(therapyProgramIds);
         programComboBox.setItems(therapyProgramIdList);
+
+        programComboBox.setPromptText("Select Program ID");
+
+        programComboBox.getSelectionModel().clearSelection();
     }
+
 
     private void refreshTable() throws SQLException, ClassNotFoundException, IOException {
         List<TherapySessionDTO> therapySessions = therapySessionBO.getAll();  // Get all users from the BO
@@ -253,6 +277,7 @@ public class TherapySessionController implements Initializable {
         String therapistId = therapistComboBox.getValue();
         String patientId = patientComboBox.getValue();
         String programId = programComboBox.getValue();
+
 
         TherapySessionDTO therapySessionDTO = new TherapySessionDTO(id, date, therapistId, patientId, programId);
 

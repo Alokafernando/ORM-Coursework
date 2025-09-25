@@ -153,10 +153,15 @@ public class PatientManagementController implements Initializable {
 
     private void loadStatus() {
         statusComboBox.setItems(FXCollections.observableArrayList("Completed", "Not Completed"));
+
+        statusComboBox.setPromptText("Select Status");
+
+        statusComboBox.getSelectionModel().clearSelection();
     }
 
+
     private void refreshTable() throws SQLException, ClassNotFoundException, IOException {
-        List<PatientDTO> patients = patientBO.getAll();  // Get all from the BO
+        List<PatientDTO> patients = patientBO.getAll();
         ObservableList<PatientTM> patientTMS = FXCollections.observableArrayList();
 
         for (PatientDTO patient : patients) {
